@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoutingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return "Hello World";
-});
+Route::get('/hello', [RoutingController::class, 'hello']);
 
-Route::get('/perkalian/{angka?}', function ($angka = null) {
-    $res = $angka * 2;
-
-    return $res;
-});
+Route::get('/perkalian/{angka?}', [RoutingController::class, 'perkalian']);
