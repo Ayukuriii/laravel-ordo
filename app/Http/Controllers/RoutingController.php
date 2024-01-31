@@ -25,6 +25,12 @@ class RoutingController extends Controller
 
         $res = $angka1 + $angka2;
 
-        return $res;
+        $dataResult = array(
+            'angka1' => $angka1,
+            'angka2' => $angka2,
+            'result' => $res
+        );
+
+        return view('introduction.pertambahan', ['data' => $dataResult]);
     }
 }
