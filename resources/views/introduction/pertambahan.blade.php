@@ -26,9 +26,9 @@
 
     <div class="row">
         <div class="col-md-4">
-            <p class="mb-2">Angka 1: {{ $data['angka1'] }}</p>
-            <p class="mb-2">Angka 2: {{ $data['angka2'] }}</p>
-            <p class="mb-2">Result: {{ $data['result'] }}</p>
+            <p class="mb-2">Angka 1 = {{ $data['angka1'] }}</p>
+            <p class="mb-2">Angka 2 = {{ $data['angka2'] }}</p>
+            <p class="mb-2">Result = {{ $data['result'] }}</p>
         </div>
     </div>
 
