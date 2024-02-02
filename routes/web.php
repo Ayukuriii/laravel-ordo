@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoutingController;
-use App\Models\Cars;
-use App\Models\Manufactures;
+use App\Models\Car;
+use App\Models\Manufacture;
+use App\Models\Review;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,26 +27,30 @@ Route::get('/cars', function () {
     );
 
     // $insert = DB::table('cars')->insert($params);
-    $insert = Cars::create($params);
+    $insert = Car::create($params);
 
-    $count = Cars::count();
+    $count = Car::count();
 
     // $getCar = DB::table('cars')->where('id', 5)->first();
-    $getCar = Cars::where('id', 12)->first();
+    $getCar = Car::where('id', 1)->first();
 
     return response()->json(['count' => $count, 'data' => $getCar]);
 });
 
 Route::get('/manufactures', function () {
-    // $params = array(
-    //     'cars_id' => 1,
-    //     'name' => 'Toyota',
-    //     'address' => 'Tokyo'
-    // );
+    $params = array(
+        'car_id' => 1,
+        'name' => 'Toyota',
+        'address' => 'Tokyo'
+    );
 
-    // Manufactures::create($params);
+    Manufacture::create($params);
 
-    $data = Cars::where('id', 1)->first();
+    $data = Car::where('id', 1)->first();
 
     return response()->json(['data' => $data->manufacturer]);
 });
+
+Route::get('/reviews', [ReviewController::class, 'index']);
+
+Route::get('/reviews/store', [ReviewController::class, 'store']);

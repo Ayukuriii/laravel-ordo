@@ -12,11 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manufactures', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Car::class)->constrained()->cascadeOnDelete();
+            $table->integer('rating');
             $table->string('name');
-            $table->string('address');
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manufactures');
+        Schema::dropIfExists('reviews');
     }
 };
