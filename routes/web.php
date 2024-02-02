@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RoutingController;
 use App\Models\Cars;
+use App\Models\Manufactures;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,18 @@ Route::get('/cars', function () {
     $getCar = Cars::where('id', 12)->first();
 
     return response()->json(['count' => $count, 'data' => $getCar]);
+});
+
+Route::get('/manufactures', function () {
+    // $params = array(
+    //     'cars_id' => 1,
+    //     'name' => 'Toyota',
+    //     'address' => 'Tokyo'
+    // );
+
+    // Manufactures::create($params);
+
+    $data = Cars::where('id', 1)->first();
+
+    return response()->json(['data' => $data->manufacturer]);
 });

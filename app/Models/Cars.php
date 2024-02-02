@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Cars extends Model
 {
@@ -12,4 +13,9 @@ class Cars extends Model
     protected $fillable = [
         'name', 'type', 'price', 'year_produced'
     ];
+
+    public function manufacturer(): HasOne
+    {
+        return $this->hasOne(Manufactures::class);
+    }
 }
