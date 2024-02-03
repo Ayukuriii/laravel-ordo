@@ -3,8 +3,8 @@
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoutingController;
 use App\Models\Car;
+use App\Models\Feature;
 use App\Models\Manufacture;
-use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
@@ -54,3 +54,19 @@ Route::get('/manufactures', function () {
 Route::get('/reviews', [ReviewController::class, 'index']);
 
 Route::get('/reviews/store', [ReviewController::class, 'store']);
+
+Route::get('/cars/{id}/feature', function (string $id) {
+    $car = Car::find($id);
+    $feature = Feature::where('name', 'AC')->first();
+
+
+    return response()->json([
+        'car' => $car->features,
+        'feature' => $feature->cars
+    ]);
+});
+
+Route::get('/features/add', function () {
+    $data = Feature::all();
+    return response()->json(['data' => $data]);
+});
