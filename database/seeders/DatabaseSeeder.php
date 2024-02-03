@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             'year_produced' => Carbon::createFromDate(1985, 1, 1)
         ]);
 
+        for ($i = 0; $i < 6; $i++) {
+            $this->call(CarSeeder::class);
+        }
+
         Feature::create(['name' => 'AC']);
         Feature::create(['name' => 'Power Steering']);
         Feature::create(['name' => 'E-Car']);
